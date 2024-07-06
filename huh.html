@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .video-container {
+            width: 80%;
+            max-width: 800px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #222;
+            color: #fff;
+        }
+        .controls button {
+            background: #444;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .controls button img {
+            width: 20px;
+            height: 20px;
+        }
+        .controls button:hover {
+            background: #555;
+        }
+        .details {
+            width: 80%;
+            max-width: 800px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="space1" id="1spc">
+<br>
+    </div>
+    <div class="details" id="videoDetails">
+        <p><strong>Title:</strong> N/A</p>
+        <p><strong>Description:</strong> N/A</p>
+    </div>
+    <div class="video-container">
+        <video id="videoPlayer" controls>
+            <source src="huh.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="controls">
+            <button onclick="rewind()">←5s</button>
+            <button onclick="playPause()">
+                <img id="playPauseIcon" src="play.png" alt="Play">
+            </button>
+            <button onclick="forward()">5s→</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoPlayer');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+
+        function playPause() {
+            if (video.paused) {
+                video.play();
+                playPauseIcon.src = 'pause.png';
+            } else {
+                video.pause();
+                playPauseIcon.src = 'play.png';
+            }
+        }
+
+        function rewind() {
+            video.currentTime -= 5;
+        }
+
+        function forward() {
+            video.currentTime += 5;
+        }
+    </script>
+</body>
+</html>
