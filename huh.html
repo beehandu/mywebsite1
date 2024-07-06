@@ -27,6 +27,12 @@
             width: 100%;
             height: auto;
         }
+        iframe {
+            border: none;
+            width: 80vw;
+            max-width: 800px;
+            height: 60vh;
+        }
         .controls {
             display: flex;
             justify-content: space-between;
@@ -71,22 +77,18 @@
 <br>
     </div>
     <div class="details" id="videoDetails">
-        <p><strong>Title:</strong> N/A</p>
-        <p><strong>Description:</strong> N/A</p>
+        <p><strong>Title:</strong> pcd blnne</p>
+        <p><strong>Description:</strong> Hatticce</p>
     </div>
     <div class="video-container">
-        <video id="videoPlayer" controls>
-            <source src="huh.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="controls">
-            <button onclick="rewind()">←5s</button>
-            <button onclick="playPause()">
-                <img id="playPauseIcon" src="play.png" alt="Play">
-            </button>
-            <button onclick="forward()">5s→</button>
-        </div>
+        
+        <iframe src="https://drive.google.com/file/d/1npS0naDbFEH7vIqJ4rD7z_tVCpS8reEN/preview" width="640" height="480"></iframe>
+
+        
+       
     </div>
+
+
 
     <script>
         const video = document.getElementById('videoPlayer');
