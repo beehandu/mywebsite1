@@ -146,7 +146,7 @@
 }
 
 
-
+/* for pcs*/
          @media (max-width: 768px) {
             .hero {
                 height: 200px;
@@ -223,6 +223,9 @@
     z-index: 1000;
     padding-top: 70px; /* Same as header height */
 }
+.drawer.show {
+    display: block; /* Ensure the drawer is visible when the 'show' class is added */
+}
 
 .drawer ul {
     list-style: none;
@@ -241,7 +244,7 @@
 
 /* Drawer Toggle Button */
 .drawer-toggle {
-    display: none;
+    display: block;
     background: none;
     border: none;
     color: #fff;
@@ -250,14 +253,13 @@
 }
 
 /* Media Queries for Responsive Design */
+
 @media (max-width: 768px) {
     .nav ul {
         display: none;
     }
 
-    .drawer-toggle {
-        display: block;
-    }
+    
 
     .drawer.show {
         display: block;
