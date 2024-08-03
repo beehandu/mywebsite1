@@ -35,6 +35,7 @@ body {
     justify-content: space-between;
     padding: 0 20px;
     background-color: #1f1f1f;
+    position: relative; /* Ensure positioning context for the toggle button */
 }
 
 .logo {
@@ -97,6 +98,85 @@ video {
 
 
 
+/* Add styles for drawer functionality */
+.drawer {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1f1f1f;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+.drawer-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive styles for phone */
+@media (max-width: 768px) {
+    .container {
+        grid-template-areas: 
+            "header"
+            "main";
+        grid-template-columns: 1fr;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .drawer-toggle {
+        display: block;
+    }
+
+    .main-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Responsive styles for PC */
+@media (min-width: 769px) {
+    .container {
+        grid-template-areas: 
+            "header header"
+            "drawer main";
+        grid-template-columns: 250px 1fr;
+    }
+
+    .drawer {
+        display: block;
+    }
+
+    .drawer-toggle {
+        display: none;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+
+    .main-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+
+
+
+
 
     </style>
 </head>
@@ -104,6 +184,7 @@ video {
     <div class="container">
         <header class="header">
             <div class="logo">Ceylon Cine TV</div>
+            <button class="drawer-toggle" onclick="toggleDrawer()">☰</button>
             <nav class="nav">
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -113,13 +194,20 @@ video {
                 </ul>
             </nav>
         </header>
-        <aside class="sidebar">
+        <aside class="sidebar drawer">
             <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">TV Shows</a></li>
+                <li><a href="#">My Account</a></li>
                 <li><a href="#">Trending</a></li>
                 <li><a href="#">New Releases</a></li>
                 <li><a href="#">Genres</a></li>
             </ul>
         </aside>
+        
+        
+        
         <main class="main-content">
             <div class="video-player">
                 <video controls autoplay controlsList="nodownload">
@@ -130,5 +218,15 @@ video {
             
         </main>
     </div>
+
+    <script>
+        function toggleDrawer() {
+            const drawer = document.querySelector('.drawer');
+            drawer.classList.toggle('open');
+        }
+    </script>
+    
+    
+
 </body>
 </html>
