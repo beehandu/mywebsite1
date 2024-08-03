@@ -207,7 +207,62 @@
             }
         }
 
-        
+        /* adding drawer styles */
+
+
+/* Drawer Styles */
+.drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1f1f1f;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding-top: 70px; /* Same as header height */
+}
+
+.drawer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.drawer ul li {
+    margin: 20px;
+}
+
+.drawer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Drawer Toggle Button */
+.drawer-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .nav ul {
+        display: none;
+    }
+
+    .drawer-toggle {
+        display: block;
+    }
+
+    .drawer.show {
+        display: block;
+    }
+}
 
 
         
@@ -217,14 +272,16 @@
     <div class="container">
         <header class="header">
             <div class="logo">Ceylon Cine TV</div>
-            <nav class="nav">
+            <button class="drawer-toggle" onclick="toggleDrawer()">☰</button>
+
+            <div class="drawer" id="drawer">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Movies</a></li>
                     <li><a href="#">TV Shows</a></li>
-                    <li><a href="#">My account</a></li>
+                    <li><a href="#">My Account</a></li>
                 </ul>
-            </nav>
+        </div>
         </header>
         <main class="main-content">
             <div class="hero">
@@ -301,5 +358,12 @@
 
         </main>
     </div>
+
+     <script>
+        function toggleDrawer() {
+            var drawer = document.getElementById('drawer');
+            drawer.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
